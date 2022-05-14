@@ -1,38 +1,19 @@
-# create-svelte
+# sveltekit issue with svelte_simple_datatables
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+First time this runs, get this error on browser
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+TypeError: Cannot read properties of undefined (reading 'length')
+    at Proxy.each (C:\projects\sk_issue\node_modules\svelte\internal\index.js:1723:31)
+    at Object.default (/src/routes/index.svelte:77:33)
+    at eval (/node_modules/svelte-simple-datatables/src/Datatable.svelte:79:17)
+    at Object.$$render (C:\projects\sk_issue\node_modules\svelte\internal\index.js:1758:22)
+    at eval (/src/routes/index.svelte:61:143)
+    at Object.$$render (C:\projects\sk_issue\node_modules\svelte\internal\index.js:1758:22)
+    at Object.default (root.svelte:43:39)
+    at eval (/.svelte-kit/runtime/components/layout.svelte:8:41)
+    at Object.$$render (C:\projects\sk_issue\node_modules\svelte\internal\index.js:1758:22)
+    at root.svelte:37:37
+    
+    Comment out the <Datatable> component, refreshes to an empty browser (which is correct, no content).
+    
+    Uncomment out the <Datatable> component, see the data grid as expected.
